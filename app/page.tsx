@@ -34,74 +34,70 @@ export default function Home() {
   };
 
   return (
-    <main style={{ maxWidth: "800px", margin: "0 auto" }}>
-      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>GitHub Star Milestone Generator</h1>
+    <main className="container">
+      <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>GitHub Star Milestone Generator</h1>
       
-      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <div>
-          <label style={{ display: "block", marginBottom: "0.5rem" }}>Repository URL</label>
-          <input 
-            type="text" 
-            placeholder="https://github.com/owner/repo" 
-            value={repoUrl}
-            onChange={(e) => setRepoUrl(e.target.value)}
-            style={{ width: "100%", padding: "0.5rem" }}
-          />
+      <article>
+        <div className="grid">
+          <div>
+            <label htmlFor="repoUrl">Repository URL</label>
+            <input 
+              id="repoUrl"
+              type="text" 
+              placeholder="https://github.com/owner/repo" 
+              value={repoUrl}
+              onChange={(e) => setRepoUrl(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="milestone">Milestone (Star Count)</label>
+            <input 
+              id="milestone"
+              type="number" 
+              value={milestone}
+              onChange={(e) => setMilestone(Number(e.target.value))}
+            />
+          </div>
         </div>
 
         <div>
-          <label style={{ display: "block", marginBottom: "0.5rem" }}>Logo URL (Optional)</label>
+          <label htmlFor="logoUrl">Logo URL (Optional)</label>
           <input 
+            id="logoUrl"
             type="text" 
             placeholder="https://example.com/logo.png" 
             value={logoUrl}
             onChange={(e) => setLogoUrl(e.target.value)}
-            style={{ width: "100%", padding: "0.5rem" }}
           />
-        </div>
-
-        <div>
-          <label style={{ display: "block", marginBottom: "0.5rem" }}>Milestone (Star Count)</label>
-          <input 
-            type="number" 
-            value={milestone}
-            onChange={(e) => setMilestone(Number(e.target.value))}
-            style={{ width: "100%", padding: "0.5rem" }}
-          />
+          <small>Leave empty to use the repository owner's avatar.</small>
         </div>
 
         <button 
           onClick={generate}
-          style={{ 
-            padding: "0.75rem", 
-            backgroundColor: "#6e5494", 
-            color: "white", 
-            border: "none", 
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontSize: "1rem"
-          }}
+          style={{ backgroundColor: "#6e5494", borderColor: "#6e5494", marginTop: "1rem" }}
         >
           Generate Milestone Image
         </button>
-      </div>
+      </article>
 
       {generatedUrl && (
-        <div style={{ marginTop: "2rem" }}>
-          <h2>Preview</h2>
-          <div style={{ border: "1px solid #ccc", padding: "1rem", borderRadius: "8px", background: "#fff" }}>
-            <img src={generatedUrl} alt="Star Milestone" style={{ maxWidth: "100%" }} />
+        <article>
+          <header>Preview</header>
+          <div style={{ textAlign: "center", padding: "1rem", background: "#f9f9f9", borderRadius: "8px", overflowX: "auto" }}>
+            <img src={generatedUrl} alt="Star Milestone" />
           </div>
           
-          <div style={{ marginTop: "1rem" }}>
-            <h3>Markdown Code</h3>
+          <div style={{ marginTop: "2rem" }}>
+            <label htmlFor="markdown">Markdown Code</label>
             <textarea 
+              id="markdown"
               readOnly 
               value={`[![Star Milestone](${generatedUrl})](${repoUrl})`}
-              style={{ width: "100%", height: "80px", padding: "0.5rem" }}
+              style={{ height: "100px" }}
             />
           </div>
-        </div>
+        </article>
       )}
     </main>
   );
