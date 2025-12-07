@@ -2,6 +2,12 @@
 
 A Next.js application to generate GitHub Star Milestone SVG badges, similar to "Repository of the day" or Socialify.
 
+![star1](https://oss.1n.hk/lyofficial/images/StarMileStone/star1.png)
+
+![star2](https://oss.1n.hk/lyofficial/images/StarMileStone/star2.png)
+
+
+
 ## Features
 
 - Generates an SVG image celebrating a specific star count milestone.
